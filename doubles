@@ -1,0 +1,19 @@
+Sub sas()
+
+n = Cells(Rows.Count, 1).End(xlUp).Row
+'k = 2
+    For i = n To 2 Step -1
+
+       If Cells(i, 1).Value = Cells(i - 1, 1).Value Then Cells(i, 1).Value = ""
+    
+    Next i
+    
+End Sub
+
+Sub sas2()
+n = Cells(Rows.Count, 1).End(xlUp).Row
+k = 4
+    For i = n To 2 Step -1
+If Cells(i, k - 1).Value = "" Then Cells(i, k).Value = ""
+Next i
+End Sub
