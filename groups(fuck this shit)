@@ -1,0 +1,35 @@
+Sub ó()
+On Error Resume Next
+
+Application.ScreenUpdating = False
+    Application.EnableAnimations = False
+    Application.EnableEvents = False
+
+i = 0
+j = 0
+n = 0
+m = 0
+n = Cells(Rows.Count, 1).End(xlUp).Row
+For i = 4 To n
+    If Cells(i - 1, 1).Value = Left(Cells(i, 1).Value, Len(Cells(i + 1, 1).Value)) Then
+        
+        j = i
+        
+              Do While Cells(i - 1, 1).Value = Left(Cells(j, 1).Value, Len(Cells(i - 1, 1).Value)) And Cells(i - 1, 1).Value <> Cells(i, 1).Value
+                j = j + 1
+            Loop
+       
+        
+        If i <> j - 1 Then
+            Range(Cells(i, 1), Cells(j, 1)).Rows.Group
+        End If
+ End If
+
+ Next i
+ With ActiveSheet.Outline
+      .AutomaticStyles = False
+      .SummaryRow = xlAbove
+      .SummaryColumn = xlRight
+ End With
+End Sub
+
